@@ -61,7 +61,7 @@ namespace SkillAdjustmentRevolver
         public bool revolver2 = false;
 
         [Name("         - XP for level up")]
-        [Description("Set the number of skill points needed for next tier.(Game default = 10%)")]
+        [Description("Set the number of skill points needed for next tier.(Game default = 10)")]
         [Slider(10, 500)]
         public int tier2 = 10;
 
@@ -108,7 +108,7 @@ namespace SkillAdjustmentRevolver
         public bool revolver3 = false;
 
         [Name("         - XP for level up")]
-        [Description("Set the number of skill points needed for next tier.(Game default = 25%)")]
+        [Description("Set the number of skill points needed for next tier.(Game default = 25)")]
         [Slider(25, 500)]
         public int tier3 = 25;
 
@@ -155,7 +155,7 @@ namespace SkillAdjustmentRevolver
         public bool revolver4 = false;
 
         [Name("         - XP for level up")]
-        [Description("Set the number of skill points needed for next tier.(Game default = 50%)")]
+        [Description("Set the number of skill points needed for next tier.(Game default = 50)")]
         [Slider(50, 500)]
         public int tier4 = 50;
 
@@ -202,7 +202,7 @@ namespace SkillAdjustmentRevolver
         public bool revolver5 = false;
 
         [Name("         - XP for level up")]
-        [Description("Set the number of skill points needed for next tier.(Game default = 100%)")]
+        [Description("Set the number of skill points needed for next tier.(Game default = 100)")]
         [Slider(100, 500)]
         public int tier5 = 100;
 
