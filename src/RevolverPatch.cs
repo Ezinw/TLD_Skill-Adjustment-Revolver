@@ -84,7 +84,11 @@ namespace SkillAdjustmentRevolver
 
             //lvl 1
             if (currentTier == SkillTiers.Beginner && Settings.settings.Degrade1 >= 1) { __result += $"\nPer-use condition degradation reduced by {Settings.settings.Degrade1}%"; }
-            if (currentTier == SkillTiers.Beginner && Settings.settings.Aim1rev >= 1) { __result += $"\nAim assist increased by {Settings.settings.Aim1rev}%"; }
+            if (currentTier == SkillTiers.Beginner && Settings.settings.Aim1rev >= 1 && Settings.settings.Aim1rev <= 19) { __result += $"\nAim assist: Low"; }
+            if (currentTier == SkillTiers.Beginner && Settings.settings.Aim1rev >= 20 && Settings.settings.Aim1rev <= 34) { __result += $"\nAim assist: Minor"; }
+            if (currentTier == SkillTiers.Beginner && Settings.settings.Aim1rev >= 35 && Settings.settings.Aim1rev <= 65) { __result += $"\nAim assist: Moderate"; }
+            if (currentTier == SkillTiers.Beginner && Settings.settings.Aim1rev >= 66 && Settings.settings.Aim1rev <= 85) { __result += $"\nAim assist: High"; }
+            if (currentTier == SkillTiers.Beginner && Settings.settings.Aim1rev >= 86 && Settings.settings.Aim1rev <= 100) { __result += $"\nAim assist: Very High"; }
             if (currentTier == SkillTiers.Beginner && Settings.settings.Recoil1 >= 1) { __result += $"\nRecoil compensation increased by {Settings.settings.Recoil1}%"; }
             if (currentTier == SkillTiers.Beginner && Settings.settings.Struggle1 >= 1) { __result += $"\nStruggle effectiveness increased by {Settings.settings.Struggle1}%"; }
             if (currentTier == SkillTiers.Beginner && Settings.settings.Repair1 >= 1) { __result += $"\n{Settings.settings.Repair1} Condition per repair action"; }
@@ -93,7 +97,11 @@ namespace SkillAdjustmentRevolver
 
             //lvl 2
             if (currentTier == SkillTiers.Novice && Settings.settings.Degrade2 >= 1) { __result += $"\nPer-use condition degradation reduced by {Settings.settings.Degrade2}%"; }
-            if (currentTier == SkillTiers.Novice && Settings.settings.Aim2rev >= 1) { __result += $"\nAim assist increased by {Settings.settings.Aim2rev}%"; }
+            if (currentTier == SkillTiers.Novice && Settings.settings.Aim2rev >= 1 && Settings.settings.Aim2rev <= 19) { __result += $"\nAim assist: Low"; }
+            if (currentTier == SkillTiers.Novice && Settings.settings.Aim2rev >= 20 && Settings.settings.Aim2rev <= 34) { __result += $"\nAim assist: Minor"; }
+            if (currentTier == SkillTiers.Novice && Settings.settings.Aim2rev >= 35 && Settings.settings.Aim2rev <= 65) { __result += $"\nAim assist: Moderate"; }
+            if (currentTier == SkillTiers.Novice && Settings.settings.Aim2rev >= 66 && Settings.settings.Aim2rev <= 85) { __result += $"\nAim assist: High"; }
+            if (currentTier == SkillTiers.Novice && Settings.settings.Aim2rev >= 86 && Settings.settings.Aim2rev <= 100) { __result += $"\nAim assist: Very High"; }
             if (currentTier == SkillTiers.Novice && Settings.settings.Struggle2 >= 1) { __result += $"\nStruggle effectiveness increased by {Settings.settings.Struggle2}%"; }
             if (currentTier == SkillTiers.Novice && Settings.settings.Damage2rev >= 1) { __result += $"\nDamage increased by {Settings.settings.Damage2rev}%"; }
             if (currentTier == SkillTiers.Novice && Settings.settings.Crit2 >= 1) { __result += $"\nCritical hit chance increased by {Settings.settings.Crit2}%"; }
@@ -122,7 +130,11 @@ namespace SkillAdjustmentRevolver
 
             //lvl 3
             if (currentTier == SkillTiers.Skilled && Settings.settings.Degrade3 >= 1) { __result += $"\nPer-use condition degradation reduced by {Settings.settings.Degrade3}%"; }
-            if (currentTier == SkillTiers.Skilled && Settings.settings.Aim3rev >= 1) { __result += $"\nAim assist increased by {Settings.settings.Aim3rev}%"; }
+            if (currentTier == SkillTiers.Skilled && Settings.settings.Aim3rev >= 1 && Settings.settings.Aim3rev <= 19) { __result += $"\nAim assist: Low"; }
+            if (currentTier == SkillTiers.Skilled && Settings.settings.Aim3rev >= 20 && Settings.settings.Aim3rev <= 34) { __result += $"\nAim assist: Minor"; }
+            if (currentTier == SkillTiers.Skilled && Settings.settings.Aim3rev >= 35 && Settings.settings.Aim3rev <= 65) { __result += $"\nAim assist: Moderate"; }
+            if (currentTier == SkillTiers.Skilled && Settings.settings.Aim3rev >= 66 && Settings.settings.Aim3rev <= 85) { __result += $"\nAim assist: High"; }
+            if (currentTier == SkillTiers.Skilled && Settings.settings.Aim3rev >= 86 && Settings.settings.Aim3rev <= 100) { __result += $"\nAim assist: Very High"; }
             if (currentTier == SkillTiers.Skilled && Settings.settings.Damage3rev >= 1) { __result += $"\nDamage increased by {Settings.settings.Damage3rev}%"; }
             if (currentTier == SkillTiers.Skilled && Settings.settings.Crit3 >= 1) { __result += $"\nCritical hit chance increased by {Settings.settings.Crit3}%"; }
             if (currentTier == SkillTiers.Skilled && Settings.settings.Repair3 >= 1)
@@ -196,17 +208,47 @@ namespace SkillAdjustmentRevolver
                     __result += $"Struggle effectiveness increased by: {Settings.settings.Struggle4}%";
                 }
             }
-            if (currentTier == SkillTiers.Expert && Settings.settings.Aim4rev >= 1)
+            if ((currentTier == SkillTiers.Expert && Settings.settings.Aim4rev >= 1 && Settings.settings.Aim4rev <= 19))
             {
-                int existingBenefitIndex = __result.IndexOf("Struggle: ");
-                if (existingBenefitIndex != -1)
-                {
-                    int endOfLineIndex = __result.IndexOf('\n', existingBenefitIndex);
-                    if (endOfLineIndex != -1)
-                    { __result = __result.Remove(existingBenefitIndex, endOfLineIndex - existingBenefitIndex); }
-                    __result += $"Aim assist increased by: {Settings.settings.Aim4rev}%";
-                }
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Low";
             }
+            if ((currentTier == SkillTiers.Expert && Settings.settings.Aim4rev >= 20 && Settings.settings.Aim4rev <= 34))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Minor";
+            }
+            if ((currentTier == SkillTiers.Expert && Settings.settings.Aim4rev >= 35 && Settings.settings.Aim4rev <= 65))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Moderate";
+            }
+            if ((currentTier == SkillTiers.Expert && Settings.settings.Aim4rev >= 66 && Settings.settings.Aim4rev <= 85))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: High";
+            }
+            if ((currentTier == SkillTiers.Expert && Settings.settings.Aim4rev >= 86 && Settings.settings.Aim4rev <= 100))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Very high";
+            }
+
 
             //lvl 5
             if (currentTier == SkillTiers.Master && Settings.settings.Damage5rev >= 1) { __result += $"\nDamage increased by {Settings.settings.Damage5rev}%"; }
@@ -254,6 +296,47 @@ namespace SkillAdjustmentRevolver
                     { __result = __result.Remove(existingBenefitIndex, endOfLineIndex - existingBenefitIndex); }
                     __result += $"Per-use condition degradation reduced by: {Settings.settings.Degrade5}%";
                 }
+            }
+
+            if ((currentTier == SkillTiers.Master && Settings.settings.Aim5rev >= 1 && Settings.settings.Aim5rev <= 19))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Low";
+            }
+            if ((currentTier == SkillTiers.Master && Settings.settings.Aim5rev >= 20 && Settings.settings.Aim5rev <= 34))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Minor";
+            }
+            if ((currentTier == SkillTiers.Master && Settings.settings.Aim5rev >= 35 && Settings.settings.Aim5rev <= 65))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Moderate";
+            }
+            if ((currentTier == SkillTiers.Master && Settings.settings.Aim5rev >= 66 && Settings.settings.Aim5rev <= 85))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: High";
+            }
+            if ((currentTier == SkillTiers.Master && Settings.settings.Aim5rev >= 86 && Settings.settings.Aim5rev <= 100))
+            {
+                List<string> resultList = __result.Split('\n').ToList();
+                List<string> newResult = resultList.Where(benefit => !benefit.Contains("Aim")).ToList();
+                string newResultString = string.Join("\n", newResult);
+                __result = newResultString;
+                __result += $"\nAim assist: Very high";
             }
 
         }
